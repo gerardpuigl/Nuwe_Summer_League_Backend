@@ -1,2 +1,2 @@
-# Nuwe_Backend_Week01_Summer_League
+# Nuwe_Summer_League_Backend
 Develop CLI (Command Line Interface)
