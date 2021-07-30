@@ -8,7 +8,7 @@ import picocli.CommandLine.Command;
 
 @Component
 @Command(description = "Welcome to this CLI app done by Gerard Puig done for the Summer League done by Nuwe.",
-		mixinStandardHelpOptions = true, subcommands = {LoginCommand.class , RegisterCommand.class})
+		mixinStandardHelpOptions = true , subcommands = {LoginCommand.class , RegisterCommand.class})
 public class CommandsController implements Runnable{
 	
     public void run() {

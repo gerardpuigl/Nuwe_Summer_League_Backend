@@ -4,20 +4,19 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.validation.annotation.Validated;
 
 public class User {
 	
 	@Id
 	private String id;
 	
-	@NotBlank(message = "Name is mandatory.")
 	private String name;
 	
 	@NotBlank(message = "Username is mandatory.")
 	private String username;
 	
 	@Email(message="Email no valid.")
-	@NotBlank
 	private String email;
 	
 	@NotBlank(message = "Password is mandatory.")

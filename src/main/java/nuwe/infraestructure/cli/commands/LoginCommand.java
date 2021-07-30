@@ -9,18 +9,17 @@ import org.springframework.stereotype.Component;
 import nuwe.application.services.UserService;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
-import picocli.CommandLine.Parameters;
 
 @Component
-@Command(name = "login", mixinStandardHelpOptions = true, description = "Login user with username and password")
+@Command(name = "login", mixinStandardHelpOptions = true, description = "Login user with username and password. [more info with \"login -h\"]")
 public class LoginCommand implements Runnable {
 
 	private Scanner sc = new Scanner(System.in);
-	
-	@Option(names = {"-u", "username"}, required = false, description = "Enter the username=\"\" or -u=\"\"" )
+
+	@Option(names = { "-u", "username" }, required = false, description = "Enter username on execution")
 	private String username;
-	
-	@Option(names = {"-p", "password"}, required = false, description = "Enter the username=\"\" or -u=\"\"" )
+
+	@Option(names = { "-p", "password" }, required = false, description = "Enter password on execution")
 	private String password;
 
 	@Autowired
@@ -28,26 +27,27 @@ public class LoginCommand implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("Has seleccionado hacer login con tu usuario y contraseña.");
+		System.out.println("Yo select to login with username & password.");
 
-		if(username == null) {
-		System.out.println("Usuario:");
-		username = sc.next();
-		}
-		
-		if (password == null) {
-			System.out.println("Password:");
-			password = sc.next();			
-		}
+		if (username == null)
+			username = ask("username");
+
+		if (password == null)
+			password = ask("password");
 
 		try {
 			if (userService.login(username, password)) {
-				System.out.println("Usuario Logueado con éxito.\n¡Bienvenid@ " + username +"!");
+				System.out.println("Login successful.\nWelcome " + username + "!");
 			} else {
-				System.out.println("Password erróneo.");
+				System.out.println("Wrong password.");
 			}
 		} catch (NoSuchElementException e) {
-			System.out.println("El usuario introducido no existe");
+			System.out.println(e.getMessage());
 		}
+	}
+
+	private String ask(String question) {
+		System.out.println(question);
+		return sc.next();
 	}
 }
