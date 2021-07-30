@@ -1,13 +1,10 @@
 package nuwe.infraestructure.cli.commands;
 
-import java.util.InvalidPropertiesFormatException;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import nuwe.application.exceptions.AlreadyExistsException;
 import nuwe.application.services.UserService;
 import nuwe.domain.entities.User;
 import picocli.CommandLine.Command;
@@ -46,10 +43,9 @@ public class RegisterCommand implements Runnable{
 		
 		try {
 			userService.newUser(user);
-				System.out.println("Usuario registrado con éxito.\n¡Bienvenid@ " + username + "!");
-
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			System.exit(1);
 		}
 	}
 

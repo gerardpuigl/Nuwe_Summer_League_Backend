@@ -1,6 +1,5 @@
 package nuwe.infraestructure.cli.commands;
 
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,21 +28,17 @@ public class LoginCommand implements Runnable {
 	public void run() {
 		System.out.println("Yo select to login with username & password.");
 
-		if (username == null)
-			username = ask("username");
-
-		if (password == null)
-			password = ask("password");
+		if (username == null) username = ask("username");
+		if (password == null) password = ask("password");
 
 		try {
-			if (userService.login(username, password)) {
-				System.out.println("Login successful.\nWelcome " + username + "!");
-			} else {
-				System.out.println("Wrong password.");
-			}
-		} catch (NoSuchElementException e) {
+			String answer = userService.login(username, password);			
+			System.out.println(answer);
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			System.exit(1);
 		}
+
 	}
 
 	private String ask(String question) {

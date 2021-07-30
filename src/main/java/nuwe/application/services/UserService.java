@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import nuwe.application.exceptions.AlreadyExistsException;
+import nuwe.application.exceptions.WrongPasswordException;
 import nuwe.domain.entities.User;
 import nuwe.domain.repository.IUserRepository;
 
@@ -42,14 +43,13 @@ public class UserService {
 		return true;
 	}
 	
-	public boolean login(String username, String password) throws NoSuchElementException {
+	public String login(String username, String password) throws NoSuchElementException, WrongPasswordException {
 		User user = userRepository.findByUsername(username)
 				.orElseThrow(()->new NoSuchElementException("The user doesn't exist"));
 		
-		if(passwordEncoder.matches(password, user.getPassword())) {
-			return true;
-		}
-		return false;
+		if(passwordEncoder.matches(password, user.getPassword())) throw new WrongPasswordException("Wrong password.");
+		
+		return "Login successful.\nWelcome " + username + "!";
 	}
 		
 	private void checkUsername(String username) throws AlreadyExistsException {
