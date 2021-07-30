@@ -1,4 +1,4 @@
-package nuwe.infraestructure.dto;
+package nuwe.infraestructure.apis.github.dto;
 
 import java.util.List;
 

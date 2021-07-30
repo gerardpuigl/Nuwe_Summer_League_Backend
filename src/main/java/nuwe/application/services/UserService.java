@@ -4,7 +4,6 @@ import java.util.NoSuchElementException;
 
 import javax.validation.Valid;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,13 +22,7 @@ public class UserService {
 	private IUserRepository userRepository;
 
 	@Autowired
-	PasswordEncoder passwordEncoder;
-
-//	@Autowired
-//	ApiMailboxlayer apiMailboxlayer;
-
-	@Autowired
-	ModelMapper modelMapper;
+	private PasswordEncoder passwordEncoder;
 
 	public boolean newUser(@Valid User user) throws AlreadyExistsException {
 
@@ -47,7 +40,7 @@ public class UserService {
 		User user = userRepository.findByUsername(username)
 				.orElseThrow(()->new NoSuchElementException("The user doesn't exist"));
 		
-		if(passwordEncoder.matches(password, user.getPassword())) throw new WrongPasswordException("Wrong password.");
+		if(!passwordEncoder.matches(password, user.getPassword())) throw new WrongPasswordException("Wrong password.");
 		
 		return "Login successful.\nWelcome " + username + "!";
 	}

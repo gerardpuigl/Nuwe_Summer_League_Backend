@@ -34,5 +34,9 @@ public class Github {
 	public void setRepository_count(int repository_count) {
 		this.repository_count = repository_count;
 	}
+	
+	public void sum1toRepository_count() {
+		++repository_count;
+	}
 
 }
