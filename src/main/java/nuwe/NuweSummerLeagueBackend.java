@@ -5,7 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import nuwe.cli.CommandsController;
+import nuwe.infraestructure.cli.CommandsController;
 import picocli.CommandLine;
 
 @SpringBootApplication
