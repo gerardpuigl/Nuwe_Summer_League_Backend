@@ -1,1 +1,1 @@
-java -jar NuweCLIapp.jar %*
+java -jar ../target/nuwecliapp-0.0.1-SNAPSHOT.jar %*

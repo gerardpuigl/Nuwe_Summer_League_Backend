@@ -8,12 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import nuwe.infraestructure.cli.CommandsController;
 import picocli.CommandLine;
 import picocli.CommandLine.IFactory;
-import picocli.spring.PicocliSpringFactory;
 
 @SpringBootApplication
 public class NuweSummerLeagueBackend implements CommandLineRunner {
 
 	public static void main(String[] args) {
+		System.out.println("Processing...");
 		SpringApplication.run(NuweSummerLeagueBackend.class, args);
 	}
 
@@ -26,7 +26,6 @@ public class NuweSummerLeagueBackend implements CommandLineRunner {
 	@Override
 	public void run(String... args) {
 		CommandLine commandLine = new CommandLine(commandsController, factory);
-		
 		commandLine.execute(args);
 	}
 	
