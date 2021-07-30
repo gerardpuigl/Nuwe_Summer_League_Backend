@@ -4,7 +4,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.validation.annotation.Validated;
 
 public class User {
 	
@@ -25,6 +24,7 @@ public class User {
 	private Github github;
 
 	public User() {
+		this.github = new Github();
 	}
 	
 	public User(String id, String name, String username, String email,String password) {
@@ -33,6 +33,7 @@ public class User {
 		this.username = username;
 		this.email = email;
 		this.password =  password;
+		this.github = new Github();
 	}
 
 	public String getId() {
