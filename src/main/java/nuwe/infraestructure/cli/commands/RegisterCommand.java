@@ -30,7 +30,7 @@ public class RegisterCommand implements Runnable{
 	
 	@Override
 	public void run() {
-		System.out.println("Has seleccionado registrar un nuevo usuario.");
+		System.out.println("Selected register new user.");
 
 		User user = new User();
 		if (username == null) username = ask("username:");

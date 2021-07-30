@@ -33,7 +33,7 @@ public class SubmitRepositoryCommand implements Runnable{
 	
 	@Override
 	public void run() {
-		System.out.println("Has seleccionado registrar un nuevo usuario.");
+		System.out.println("Selected Submit Repository to your user.");
 
 		if (username == null) username = ask("username:");
 		if (password == null) password = ask("password");

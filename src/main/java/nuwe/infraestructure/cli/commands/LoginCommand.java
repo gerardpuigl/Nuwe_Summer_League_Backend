@@ -26,7 +26,7 @@ public class LoginCommand implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("Yo select to login with username & password.");
+		System.out.println("Selected login with username & password.");
 
 		if (username == null) username = ask("username");
 		if (password == null) password = ask("password");

@@ -1,23 +1,32 @@
-package nuwe.domain.entities;
+package nuwe.infraestructure.repositorys.mongodb.entities;
+
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-public class Project {
+@Document(collection = "project")
+public class MongoProjectEntity {
 
 	@Id
 	private String id;
 	
+	@NotBlank
 	private String userId;
 	
+	@NotBlank
 	private String name;
 
+	@NotBlank
 	private String stack;
 
-	private String github_url;
+	@NotBlank
+	private String githubUrl;
 
+	@NotBlank
 	private String url;
-
-	public Project() {
+	
+	public MongoProjectEntity() {
 		
 	}
 
@@ -54,11 +63,11 @@ public class Project {
 	}
 
 	public String getGithub_url() {
-		return github_url;
+		return githubUrl;
 	}
 
 	public void setGithub_url(String github_url) {
-		this.github_url = github_url;
+		this.githubUrl = github_url;
 	}
 
 	public String getUrl() {
