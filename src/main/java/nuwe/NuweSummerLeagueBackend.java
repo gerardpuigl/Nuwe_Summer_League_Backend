@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import nuwe.infraestructure.cli.CommandsController;
 import picocli.CommandLine;
+import picocli.CommandLine.IFactory;
+import picocli.spring.PicocliSpringFactory;
 
 @SpringBootApplication
 public class NuweSummerLeagueBackend implements CommandLineRunner {
@@ -16,11 +18,14 @@ public class NuweSummerLeagueBackend implements CommandLineRunner {
 	}
 
 	@Autowired
+    private IFactory factory;
+	
+	@Autowired
 	private CommandsController commandsController;
 	
 	@Override
 	public void run(String... args) {
-		CommandLine commandLine = new CommandLine(commandsController);
+		CommandLine commandLine = new CommandLine(commandsController, factory);
 		
 		commandLine.execute(args);
 	}

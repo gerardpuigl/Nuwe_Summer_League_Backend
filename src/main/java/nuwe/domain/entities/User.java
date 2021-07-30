@@ -22,6 +22,8 @@ public class User {
 	
 	@NotBlank(message = "Password is mandatory.")
 	private String password;
+	
+	private Github github;
 
 	public User() {
 	}
@@ -72,5 +74,13 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Github getGithub() {
+		return github;
+	}
+
+	public void setGithub(Github github) {
+		this.github = github;
 	}
 }

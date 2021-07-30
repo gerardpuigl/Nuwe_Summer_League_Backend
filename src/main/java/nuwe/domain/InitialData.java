@@ -21,8 +21,8 @@ public class InitialData {
 	@PostConstruct
 	public void populate() {
 		
-		User user1 = new User("60c4b7968c71c14b521ed76a", "TestUser01", "User01", "TestUser01@nuwe.io", passwordEncoder.encode("hackathonMWC"));
-		User user2 = new User("60c4b7968c71c14b521ed76b", "TestUser02", "User02", "TestUser02@nuwe.io", passwordEncoder.encode("hackathonMWC"));
+		User user1 = new User("60c4b7968c71c14b521ed76a", "TestUser01", "User01", "TestUser01@nuwe.io", passwordEncoder.encode("1234"));
+		User user2 = new User("60c4b7968c71c14b521ed76b", "TestUser02", "User02", "TestUser02@nuwe.io", passwordEncoder.encode("1234"));
 		userRepository.save(user2);
 		userRepository.save(user1);
 
