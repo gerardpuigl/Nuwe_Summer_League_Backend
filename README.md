@@ -20,15 +20,15 @@ Done for the Nuwe Summer League in Backend cathegory.
 
 ## ⚙️ How to Use 
 
-  Important check that you have JVM installed. `java -version` and monogodb started on port 27000
+  Important check that you have JVM installed. `java -version` and local monogodb started on port 27000.
 
 ### On windows: (recommended to test)
 
-On your cmd open the application folder from this repository text any command to use.
+Open the cmd, open the application folder from this repository and text any command.
 
 ### On mac or Linux:
 
-On your termianl, open this application and use the commands but changing `nuwe` by `java -jar nuweCliApp.jar`
+On the termianl, open this application and text any commands but changing `nuwe` by `java -jar nuweCliApp.jar`
 
 Example `java -jar nuweCliApp.jar login`
 
