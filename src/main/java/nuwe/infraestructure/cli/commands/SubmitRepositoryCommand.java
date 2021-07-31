@@ -11,7 +11,7 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
 @Component
-@Command(name = "submit_repository" , mixinStandardHelpOptions = true, description = "Submit Github Repository [more info with \"register -h\"]\"")
+@Command(name = "submit_repository" , mixinStandardHelpOptions = true, description = "Submit Github Repository [more info with \"submit_repository -h\"]\"")
 public class SubmitRepositoryCommand implements Runnable{
 
 	@Option(names = {"-u", "username"}, required = false, description = "Enter username on execution" )

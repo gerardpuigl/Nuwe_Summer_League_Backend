@@ -11,7 +11,7 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
 @Component
-@Command(name = "github_config" , mixinStandardHelpOptions = true, description = "Add github user & url [more info with \"register -h\"]\"")
+@Command(name = "github_config" , mixinStandardHelpOptions = true, description = "Add github user & url [more info with \"github_config -h\"]\"")
 public class GithubConfigCommand implements Runnable{
 
 	@Option(names = {"-u", "username"}, required = false, description = "Enter username on execution" )
