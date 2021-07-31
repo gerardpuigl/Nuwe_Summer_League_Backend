@@ -10,13 +10,13 @@ Done for the Nuwe Summer League in Backend cathegory.
 
 ## ✔️ Task
 
-- **Task-1:** Configurar el acceso a una base de datos, que permita guardar toda la información del usuario.
-- **Task-2:** Crear modelos de user y project.
-- **Task-3:** Crear un login y register que permita al usuario iniciar sesión o crear un usuario a través del los siguientes comandos:
-- **Task-4:** Implementar una solución para revisar que el correo implementado tiene el formato correcto
-- **Task-5:** Crear el comando nuwe submit_repository [url] | Comando que permite al usuario guardar los datos de un respositorio en su cuenta.
-- **Task-6:** Crear el comando nuwe github_config | Comando que le permite al usuario introducir los datos de parámeto github (username y url).
-- **Task-7:** Hacer testing de la aplicación (unitario, integracióny y/o E2E)
+- **Task-1:** Configure db access to allow save user and project info.
+- **Task-2:** Create user and project model.
+- **Task-3:** Create login and register that allow authenticate user or create new user.
+- **Task-4:** Implement a checking email solution.
+- **Task-5:** Creatre nuwe submit_repository command that allow to save repository data to your account.
+- **Task-6:** Create nuwe github_config command that allow to save github credentials in your user account.
+- **Task-7:** [To do] Test your application (unit test, integration and/or E2E)
 
 ## ⚙️ How to Use 
 
@@ -26,7 +26,7 @@ Done for the Nuwe Summer League in Backend cathegory.
 
 On your cmd open the application folder from this repository text any command to use.
 
-### On mac or Linux
+### On mac or Linux:
 
 On your termianl, open this application and use the commands but changing `nuwe` by `java -jar nuweCliApp.jar`
 
