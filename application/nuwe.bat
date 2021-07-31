@@ -1,1 +1,1 @@
-java -jar NuweCLIapp.jar %*
+java -jar nuweCliApp.jar %*
