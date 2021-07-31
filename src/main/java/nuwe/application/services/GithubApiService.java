@@ -11,6 +11,7 @@ import nuwe.domain.entities.User;
 import nuwe.domain.repository.IProjectRepository;
 import nuwe.domain.repository.IUserRepository;
 import nuwe.infraestructure.apis.github.GithubApi;
+import nuwe.infraestructure.apis.github.dto.GithubDTO;
 import nuwe.infraestructure.apis.github.dto.GithubRepoDTO;
 
 
@@ -38,17 +39,31 @@ public class GithubApiService {
 		//get user that add this repository, set userId to project & increase in one the repository_count
 		User user = userRepository.findByUsername(username).get();
 		project.setUserId(user.getId());
-		user.getGithub().sum1toRepository_count();
 		
-		//check if already in the database
+		//check if already in the database and save it
 		checkProjectExist(project.getGithub_url(),project.getUserId());
-		
-		//save both entities
-		userRepository.save(user);
 		projectRepository.save(project);
 		
+		//Increse repo count in one and update user
+		user.getGithub().sum1toRepository_count();
+		userRepository.save(user);
+
 		return githubRepoDTO;
 	}
+	
+	public String addGithubInformation(String username, String githubUser) throws NotFoundException {
+		//get user to add the information
+		User user = userRepository.findByUsername(username).get();
+		
+		GithubDTO githubDTO = githubApi.getGithubCredentials(githubUser);
+		
+		user.getGithub().setUsername(githubUser);
+		user.getGithub().setUrl(githubDTO.getUrl());
+		
+		userRepository.save(user);
+		return "Github credentails added to your user.";
+	}
+
 	
 	private void checkProjectExist(String url,String userId) throws AlreadyExistsException {
 		if (projectRepository.existsByGithub_urlAndUserId(url,userId))

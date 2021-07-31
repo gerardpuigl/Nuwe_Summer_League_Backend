@@ -35,19 +35,20 @@ public class UserService {
 		userRepository.save(user);
 		return true;
 	}
-	
+
 	public String login(String username, String password) throws NoSuchElementException, WrongPasswordException {
 		User user = userRepository.findByUsername(username)
-				.orElseThrow(()->new NoSuchElementException("The user doesn't exist"));
-		
-		if(!passwordEncoder.matches(password, user.getPassword())) throw new WrongPasswordException("Wrong password.");
-		
+				.orElseThrow(() -> new NoSuchElementException("The user doesn't exist"));
+
+		if (!passwordEncoder.matches(password, user.getPassword()))
+			throw new WrongPasswordException("Wrong password.");
+
 		return "Login successful.\nWelcome " + username + "!";
 	}
-		
-	private void checkUsername(String username) throws AlreadyExistsException {
+
+	private boolean checkUsername(String username) throws AlreadyExistsException {
 		if (userRepository.existsByUsername(username))
 			throw new AlreadyExistsException("Username already in use.");
+		return true;
 	}
-
 }

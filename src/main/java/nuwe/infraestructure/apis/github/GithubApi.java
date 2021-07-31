@@ -25,15 +25,6 @@ public class GithubApi {
 			.bodyToMono(GithubDTO.class)
 			.block();
 		
-		List<GithubRepoDTO> githubReposUrl = webClient.get()
-				.uri(githubDTO.getRepos_url())
-				.accept(MediaType.APPLICATION_JSON)
-				.retrieve()
-				.bodyToFlux(GithubRepoDTO.class)
-				.buffer().blockLast();
-		
-		githubDTO.setRepositories(githubReposUrl);
-		
 		return githubDTO;
 	}
 
