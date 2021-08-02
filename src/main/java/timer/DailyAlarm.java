@@ -4,9 +4,6 @@ import java.awt.Component;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -17,7 +14,7 @@ import javax.swing.JOptionPane;
 public class DailyAlarm {
 
 	public static void main(String[] args) throws ParseException {
-		Date alarmTime = new SimpleDateFormat("yyyy-mm-dd hh:mm").parse(LocalDate.now().toString() + " " + args[0]);
+		Date alarmTime = new SimpleDateFormat("dd-mm-yyyy hh:mm").parse(LocalDate.now().toString() + " " + args[0]);
 		String message = "Wake Up! Wake Up!";
 
 		// options

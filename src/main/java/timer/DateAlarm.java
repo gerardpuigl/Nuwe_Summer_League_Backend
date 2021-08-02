@@ -1,9 +1,9 @@
 package timer;
 
 import java.awt.Component;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -21,11 +21,17 @@ public class DateAlarm {
 		if (args.length >= 2) alarmDate = args[1];
 		if (args.length >= 3) message = args[2];
 
-		LocalDateTime taskTime = LocalDateTime.parse(alarmDate + "T" + alarmTime);
-		Date taskTimeAsDate = Date.from(taskTime.atZone(ZoneId.systemDefault()).toInstant());
-
+		Date taskTime = null;
+		
+		try {
+			taskTime = new SimpleDateFormat("dd-MM-yyyy HH:mm").parse(alarmDate + " " + alarmTime);
+			System.out.println(taskTime.toString());
+		} catch (ParseException e) {
+			System.out.println(e.getMessage());
+		}
+		
 		Timer timer = new Timer();
-		timer.schedule(setAlarm(message), taskTimeAsDate);
+		timer.schedule(setAlarm(message), taskTime);
 	}
 
 	private static TimerTask setAlarm(String message) {
