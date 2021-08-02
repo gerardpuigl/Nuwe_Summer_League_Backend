@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import nuwe.application.services.TimerService;
-import nuwe.application.services.UserService;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
@@ -22,7 +21,7 @@ public class RestTimeCommand implements Runnable{
 	@Option(names = {"-t", "time"}, required = false, description = "Set time in format \"hour:minutes\"" )
 	private String alarmTime;
 	
-	@Option(names = {"-m", "message"}, required = false, description = "Set message for the alarm \"hour:minutes\"" )
+	@Option(names = {"-m", "message"}, required = false, description = "Set message for the alarm [Optional]" )
 	private String message;
 
 	private Scanner sc = new Scanner(System.in);
