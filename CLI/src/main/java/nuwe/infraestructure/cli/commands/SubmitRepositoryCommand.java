@@ -2,15 +2,9 @@ package nuwe.infraestructure.cli.commands;
 
 import java.util.Scanner;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import nuwe.application.services.GithubApiService;
-import nuwe.application.services.UserService;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-@Component
 @Command(name = "submit_repository" , mixinStandardHelpOptions = true, description = "Submit Github Repository [more info with \"submit_repository -h\"]\"")
 public class SubmitRepositoryCommand implements Runnable{
 
@@ -24,12 +18,6 @@ public class SubmitRepositoryCommand implements Runnable{
 	private String urlGithubRepository;
 	
 	private Scanner sc = new Scanner(System.in);
-
-	@Autowired
-	private UserService userService;
-	
-	@Autowired
-	private GithubApiService githubApiService;
 	
 	@Override
 	public void run() {
@@ -39,8 +27,8 @@ public class SubmitRepositoryCommand implements Runnable{
 		if (password == null) password = ask("password");
 
 		try {
-			String answer = userService.login(username, password);			
-			System.out.println(answer);
+//			String answer = userService.login(username, password);			
+//			System.out.println(answer);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.exit(1);
@@ -49,7 +37,7 @@ public class SubmitRepositoryCommand implements Runnable{
 		if (urlGithubRepository == null) urlGithubRepository = ask("Url github repository:");
 		
 		try {
-			System.out.println(githubApiService.addProject(username,urlGithubRepository).toString());
+//			System.out.println(githubApiService.addProject(username,urlGithubRepository).toString());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.exit(1);

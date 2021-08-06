@@ -4,14 +4,10 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import org.apache.commons.validator.GenericValidator;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import nuwe.application.services.TimerService;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-@Component
 @Command(name = "rest_time" , mixinStandardHelpOptions = true, description = "Create an alarm [more info with \"submit_repository -h\"]\"")
 public class RestTimeCommand implements Runnable{
 
@@ -26,9 +22,6 @@ public class RestTimeCommand implements Runnable{
 
 	private Scanner sc = new Scanner(System.in);
 
-	@Autowired
-	private TimerService timerService;
-	
 	@Override
 	public void run() {
 		
@@ -44,7 +37,7 @@ public class RestTimeCommand implements Runnable{
 
 		
 		try {
-			timerService.setAlarm(alarmDate, alarmTime, message);
+//			timerService.setAlarm(alarmDate, alarmTime, message);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.exit(1);

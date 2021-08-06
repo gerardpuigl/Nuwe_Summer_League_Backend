@@ -2,15 +2,9 @@ package nuwe.infraestructure.cli.commands;
 
 import java.util.Scanner;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import nuwe.application.services.GithubApiService;
-import nuwe.application.services.UserService;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-@Component
 @Command(name = "github_config" , mixinStandardHelpOptions = true, description = "Add github user & url [more info with \"github_config -h\"]\"")
 public class GithubConfigCommand implements Runnable{
 
@@ -24,12 +18,6 @@ public class GithubConfigCommand implements Runnable{
 	private String githubUser;
 	
 	private Scanner sc = new Scanner(System.in);
-
-	@Autowired
-	private UserService userService;
-
-	@Autowired
-	private GithubApiService githubService;
 	
 	@Override
 	public void run() {
@@ -39,8 +27,8 @@ public class GithubConfigCommand implements Runnable{
 		if (password == null) password = ask("password");
 
 		try {
-			String answer = userService.login(username, password);			
-			System.out.println(answer);
+//			String answer = userService.login(username, password);			
+//			System.out.println(answer);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.exit(1);
@@ -49,7 +37,7 @@ public class GithubConfigCommand implements Runnable{
 		if (githubUser == null) githubUser = ask("Username on github");
 		
 		try {
-			System.out.println(githubService.addGithubInformation(username, githubUser).toString());
+//			System.out.println(githubService.addGithubInformation(username, githubUser).toString());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.exit(1);

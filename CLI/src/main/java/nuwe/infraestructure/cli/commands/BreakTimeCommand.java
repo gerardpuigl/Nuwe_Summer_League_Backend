@@ -2,14 +2,9 @@ package nuwe.infraestructure.cli.commands;
 
 import java.util.Scanner;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import nuwe.application.services.TimerService;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-@Component
 @Command(name = "break_time", mixinStandardHelpOptions = true, description = "Create a repeteable warning each XX minutes [more info with \"submit_repository -h\"]\"")
 public class BreakTimeCommand implements Runnable {
 
@@ -21,9 +16,6 @@ public class BreakTimeCommand implements Runnable {
 
 	private Scanner sc = new Scanner(System.in);
 
-	@Autowired
-	private TimerService timerService;
-
 	@Override
 	public void run() {
 
@@ -33,7 +25,7 @@ public class BreakTimeCommand implements Runnable {
 			minutes = ask("Set time loop in minutes:");
 
 		try {
-			timerService.setLoopAlarm(String.valueOf(minutes), message);
+//			timerService.setLoopAlarm(String.valueOf(minutes), message);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.exit(1);

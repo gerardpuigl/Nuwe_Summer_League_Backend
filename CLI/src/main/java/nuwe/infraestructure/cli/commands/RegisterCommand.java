@@ -2,15 +2,9 @@ package nuwe.infraestructure.cli.commands;
 
 import java.util.Scanner;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import nuwe.application.services.UserService;
-import nuwe.domain.entities.User;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-@Component
 @Command(name = "register" , mixinStandardHelpOptions = true, description = "Register a new user [more info with \"register -h\"]\"")
 public class RegisterCommand implements Runnable{
 
@@ -25,24 +19,21 @@ public class RegisterCommand implements Runnable{
 	
 	private Scanner sc = new Scanner(System.in);
 
-	@Autowired
-	private UserService userService;
-	
 	@Override
 	public void run() {
 		System.out.println("Selected register new user.");
 
-		User user = new User();
+//		User user = new User();
 		if (username == null) username = ask("username:");
 		if (password == null) password = ask("password:");
 		if (email == null) email = ask("email:");
 
-		user.setUsername(username);
-		user.setPassword(password);
-		user.setEmail(email);
+//		user.setUsername(username);
+//		user.setPassword(password);
+//		user.setEmail(email);
 		
 		try {
-			userService.newUser(user);
+//			userService.newUser(user);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.exit(1);

@@ -2,14 +2,9 @@ package nuwe.infraestructure.cli.commands;
 
 import java.util.Scanner;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import nuwe.application.services.UserService;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
-@Component
 @Command(name = "login", mixinStandardHelpOptions = true, description = "Login user with username and password. [more info with \"login -h\"]")
 public class LoginCommand implements Runnable {
 
@@ -21,9 +16,6 @@ public class LoginCommand implements Runnable {
 	@Option(names = { "-p", "password" }, required = false, description = "Enter password on execution")
 	private String password;
 
-	@Autowired
-	private UserService userService;
-
 	@Override
 	public void run() {
 		System.out.println("Selected login with username & password.");
@@ -32,8 +24,8 @@ public class LoginCommand implements Runnable {
 		if (password == null) password = ask("password");
 
 		try {
-			String answer = userService.login(username, password);			
-			System.out.println(answer);
+//			String answer = userService.login(username, password);			
+//			System.out.println(answer);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.exit(1);
