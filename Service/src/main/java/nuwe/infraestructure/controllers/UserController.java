@@ -10,6 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,11 +20,8 @@ import nuwe.application.services.UserService;
 import nuwe.infraestructure.dto.UserDTO;
 
 @RestController
-//@RequestMapping("/user")
+@RequestMapping("/user")
 public class UserController {
-
-	//TODO login with username and password
-	//TODO register with username, password and email
 
 	@Autowired
 	UserService userService;

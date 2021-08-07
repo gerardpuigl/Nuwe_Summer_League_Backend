@@ -2,6 +2,8 @@ package nuwe.infraestructure.cli.commands;
 
 import java.util.Scanner;
 
+import nuwe.application.services.UserService;
+import nuwe.infraestructure.dto.UserDTO;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
@@ -15,22 +17,22 @@ public class LoginCommand implements Runnable {
 
 	@Option(names = { "-p", "password" }, required = false, description = "Enter password on execution")
 	private String password;
+	
+	private UserService userService = new UserService();
 
 	@Override
 	public void run() {
 		System.out.println("Selected login with username & password.");
+		
+		UserDTO user= new UserDTO();
 
 		if (username == null) username = ask("username");
+		user.setUsername(username);
 		if (password == null) password = ask("password");
-
-		try {
-//			String answer = userService.login(username, password);			
-//			System.out.println(answer);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			System.exit(1);
-		}
-
+		user.setPassword(password);
+		
+		String answer = userService.login(user);			
+		System.out.println(answer);
 	}
 
 	private String ask(String question) {

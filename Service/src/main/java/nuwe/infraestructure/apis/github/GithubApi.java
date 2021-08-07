@@ -16,7 +16,7 @@ public class GithubApi {
     WebClient webClient;
     
 	public GithubDTO getGithubCredentials(String username) throws NotFoundException {
-		GithubDTO githubDTO = webClient.get()
+		GithubDTO githubDTO = webClient.post()
 			.uri("https://api.github.com/users/" + username)
 			.accept(MediaType.APPLICATION_JSON)
 			.retrieve()

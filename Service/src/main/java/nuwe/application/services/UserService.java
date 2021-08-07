@@ -50,7 +50,7 @@ public class UserService {
 		if (!passwordEncoder.matches(password, user.getPassword()))
 			throw new WrongPasswordException("Wrong password.");
 
-		return "Login successful.\nWelcome " + username + "!";
+		return "Login successful. Welcome " + username + "!";
 	}
 
 	private boolean checkUsername(String username) throws AlreadyExistsException {
