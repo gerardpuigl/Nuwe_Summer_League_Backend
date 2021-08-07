@@ -13,6 +13,7 @@ import nuwe.infraestructure.cli.Exception.ExceptionHandler;
 import picocli.CommandLine;
 import picocli.CommandLine.IFactory;
 
+/*
 @SpringBootApplication
 public class NuweSummerLeagueBackend implements CommandLineRunner {
 
@@ -34,14 +35,15 @@ public class NuweSummerLeagueBackend implements CommandLineRunner {
 	}
 
 }
+*/
+public class NuweSummerLeagueBackend {
 
-/*
- * public class NuweSummerLeagueBackend {
- * 
- * public static void main(String[] args) {
- * Logger.getLogger("io.netty").setLevel(Level.OFF);
- * 
- * int exitCode = new CommandLine( new CommandsController())
- * .setExecutionExceptionHandler(new ExceptionHandler()) .execute(args);
- * System.exit(exitCode); } }
- */
+	public static void main(String[] args) {
+		Logger.getLogger("io.netty").setLevel(Level.OFF);
+
+		int exitCode = new CommandLine(new CommandsController())
+				.setExecutionExceptionHandler(new ExceptionHandler())
+				.execute(args);
+		System.exit(exitCode);
+	}
+}
