@@ -17,7 +17,7 @@ public class BreakTimeCommand implements Runnable {
 	private int minutes = 0;
 
 	@Option(names = { "-m", "message" }, required = false, description = "Set message for the alarm [Optional]")
-	private String message;
+	private String message = "Coffee Time!";
 
 	private Scanner sc = new Scanner(System.in);
 
@@ -27,13 +27,17 @@ public class BreakTimeCommand implements Runnable {
 	@Override
 	public void run() {
 
-		System.out.println("Selected create a repeteable warning each XX minutes.");
+		System.out.println("Selected create a repeteable warning.");
 
-		if (minutes == 0)
-			minutes = ask("Set time loop in minutes:");
+		if (minutes == 0) minutes = ask("Set time loop in minutes:");
 
 		try {
 			timerService.setLoopAlarm(String.valueOf(minutes), message);
+			if (minutes == 1) {
+				System.out.println("Alarm set for a period of " + minutes + " minute");
+			} else {
+				System.out.println("Alarm set for a period of " + minutes + " minutes.");
+			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.exit(1);

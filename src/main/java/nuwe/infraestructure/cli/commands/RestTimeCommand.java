@@ -22,7 +22,7 @@ public class RestTimeCommand implements Runnable{
 	private String alarmTime;
 	
 	@Option(names = {"-m", "message"}, required = false, description = "Set message for the alarm [Optional]" )
-	private String message;
+	private String message = "Time to go home!";
 
 	private Scanner sc = new Scanner(System.in);
 
@@ -42,9 +42,9 @@ public class RestTimeCommand implements Runnable{
 		
 		alarmTime = validateTimeFormat(alarmTime);
 
-		
 		try {
 			timerService.setAlarm(alarmDate, alarmTime, message);
+			System.out.println("Alarm set.");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.exit(1);
