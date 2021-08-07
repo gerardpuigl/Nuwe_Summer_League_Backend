@@ -13,7 +13,7 @@ Done for the Nuwe Summer League in Backend cathegory.
 - **Task-1:** Create a Timer to advice the user that is time to rest or go home with the commands: 
   - "rest_time": Configurate and hour to recive a warning to advice the user to stop to work.
   - "break_time": Configurate a loop to recive a warning to advice the user to do a break.
-- **Task-2:** [To do] Create command to configurate the timers: (for Java complexity I can't implement it)
+- **Task-2:** [To do] Create command to configurate the timers.
   - "timer_config": allow to change the hour or the loop minutes for the previous advices.
 - **Task-3:** At the sheduled time, the user should recive and console command with one of both options.
   (I chose JOptionPane to leave console free to work). 
